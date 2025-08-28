@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Telegram\Bot\Api;
 use Telegram\Bot\Objects\Update;
 use Illuminate\Support\Facades\Log;
+use App\Models\Message;
 
 class TelegramController extends Controller
 {
@@ -20,6 +21,10 @@ class TelegramController extends Controller
     public function webhook(Request $request)
     {
         try {
+              // ✅ Respond immediately
+            response()->json(['status' => 'ok'], 200)->send();
+            //  fastcgi_finish_request(); 
+
             Log::info("Incoming Webhook", ['data'=>$request->all()]);
             $update = $this->telegram->getWebhookUpdates();
             
@@ -40,6 +45,24 @@ class TelegramController extends Controller
     {
         $chatId = $message->getChat()->getId();
         $text = $message->getText();
+        $messageId = $message->getMessageId();
+        
+        $exploded_text = explode(' ', $text);
+        $chatId = $exploded_text[0];
+        if(!empty($chatId) && substr($chatId, 0, 1) == '@'){
+            $chatId = substr($chatId, 1);
+            unset( $exploded_text[0]);
+            $text = implode(" ", $exploded_text);
+        }
+        // Store the incoming message
+        Message::create([
+            'type' => 1, // text message
+            'sender' => $message->getFrom()->getFirstName() ?? 'Unknown',
+            'message' => $text,
+            'chat_id' => $chatId,
+            'telegram_message_id' => $messageId,
+            'is_from_telegram' => true
+        ]);
         
         // Handle different commands
         switch ($text) {
@@ -168,8 +191,7 @@ class TelegramController extends Controller
 
     public function setWebhook()
     {
-        Log::info("Setting Webhook");
-        dd("Strope");
+
         try {
             $result = $this->telegram->setWebhook([
                 'url' => config('telegram.bot.webhook_url')
@@ -209,6 +231,34 @@ class TelegramController extends Controller
             return response()->json(['status' => 'error', 'message' => 'Internal server error'], 500);
         }
     }
+
+    // Add new method to get messages for a specific chat
+    public function getMessages(Request $request)
+    {
+        try {
+            Log::info("Messages Log");
+            $chatId = $request->input('chat_id', 'default');
+            
+            $messages = Message::where('chat_id', $chatId)
+                ->orderBy('created_at', 'asc')
+                ->get()
+                ->map(function ($message) {
+                    return [
+                        'id' => $message->id,
+                        'sender' => $message->sender,
+                        'message' => $message->message,
+                        'is_from_telegram' => $message->is_from_telegram,
+                        'time' => $message->created_at->format('H:i')
+                    ];
+                });
+            Log::info("Messages Log", ['chat id'=>$chatId, 'messages'=>$messages]);
+            return response()->json(['status' => 'success', 'messages' => $messages]);
+        } catch (\Exception $e) {
+            Log::error('Error getting messages: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Failed to get messages'], 500);
+        }
+    }
+
     public function removeWebhook()
     {
         try {

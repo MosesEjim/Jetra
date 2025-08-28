@@ -257,24 +257,119 @@ document.addEventListener('DOMContentLoaded', function() {
 	const sendMessage = document.getElementById('sendMessage');
 	const chatMessages = document.getElementById('chatMessages');
 	let isSending = false; // Flag to prevent multiple simultaneous requests
+	let lastMessageId = 0; // Track last message ID for updates
+
+	// Guest name management
+	function generateGuestName() {
+		const randomNumber = Math.floor(Math.random() * 10000); // Generate random number 0-9999
+		return `guest${randomNumber}`;
+	}
+
+	function getOrCreateGuestName() {
+		let guestName = localStorage.getItem('jetra_guest_name');
+		if (!guestName) {
+			guestName = generateGuestName();
+			localStorage.setItem('jetra_guest_name', guestName);
+		}
+		return guestName;
+	}
+
+	// Initialize guest name on page load
+	const currentGuestName = getOrCreateGuestName();
+	console.log('Current guest:', currentGuestName);
+
+	// Load existing messages
+	function loadMessages() {
+		const guestName = getOrCreateGuestName();
+		
+		fetch(`/telegram/get-messages?chat_id=${guestName}`)
+			.then(response => response.json())
+			.then(data => {
+				if (data.status === 'success' && data.messages.length > 0) {
+					// Clear existing messages
+					chatMessages.innerHTML = '';
+					
+					// Add all messages
+					data.messages.forEach(msg => {
+						addMessage(msg.message, msg.is_from_telegram ? 'bot' : 'user', msg.time);
+						lastMessageId = Math.max(lastMessageId, msg.id);
+					});
+					
+					// Scroll to bottom
+					chatMessages.scrollTop = chatMessages.scrollHeight;
+				}
+			})
+			.catch(error => {
+				console.error('Error loading messages:', error);
+			});
+	}
+
+	// Check for new messages periodically
+	function checkForNewMessages() {
+		const guestName = getOrCreateGuestName();
+		
+		fetch(`/telegram/get-messages?chat_id=${guestName}`)
+			.then(response => response.json())
+			.then(data => {
+				if (data.status === 'success' && data.messages.length > 0) {
+					// Find new messages
+					const newMessages = data.messages.filter(msg => msg.id > lastMessageId);
+					
+					if (newMessages.length > 0) {
+						newMessages.forEach(msg => {
+							addMessage(msg.message, msg.is_from_telegram ? 'bot' : 'user', msg.time);
+							lastMessageId = Math.max(lastMessageId, msg.id);
+						});
+						
+						// Scroll to bottom
+						chatMessages.scrollTop = chatMessages.scrollHeight;
+					}
+				}
+			})
+			.catch(error => {
+				console.error('Error checking for new messages:', error);
+			});
+	}
 
 	// Open chat window
 	chatButton.addEventListener('click', function() {
 		chatWindow.style.display = 'flex';
 		messageInput.focus();
+		
+		// Load messages when opening chat
+		loadMessages();
+		
+		// Start checking for new messages
+		startMessagePolling();
 	});
 
 	// Close chat window
 	closeChat.addEventListener('click', function() {
 		chatWindow.style.display = 'none';
+		stopMessagePolling();
 	});
 
 	// Close chat when clicking outside
 	document.addEventListener('click', function(e) {
 		if (!chatWindow.contains(e.target) && !chatButton.contains(e.target)) {
 			chatWindow.style.display = 'none';
+			stopMessagePolling();
 		}
 	});
+
+	let messagePollingInterval;
+
+	function startMessagePolling() {
+		// Check for new messages every 3 seconds
+		messagePollingInterval = setInterval(checkForNewMessages, 3000);
+	}
+
+	function stopMessagePolling() {
+		if (messagePollingInterval) {
+			clearInterval(messagePollingInterval);
+			messagePollingInterval = null;
+		}
+	}
 
 	// Send message function
 	function sendMessageHandler() {
@@ -308,6 +403,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			chatMessages.appendChild(typingDiv);
 			chatMessages.scrollTop = chatMessages.scrollHeight;
 			
+			// Get guest name and format message for Telegram
+			const guestName = getOrCreateGuestName();
+			const formattedMessage = `${guestName}: ${message}`;
+			
 			// Send message to Telegram API
 			fetch('/telegram/send-message', {
 				method: 'POST',
@@ -315,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					'Content-Type': 'application/json',
 					'X-Requested-With': 'XMLHttpRequest'
 				},
-				body: JSON.stringify({ message: message })
+				body: JSON.stringify({ message: formattedMessage })
 			})
 			.then(response => {
 				if (!response.ok) {
@@ -369,12 +468,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	// Add message to chat
-	function addMessage(text, sender) {
+	function addMessage(text, sender, time = null) {
 		const messageDiv = document.createElement('div');
 		messageDiv.className = `message ${sender}-message`;
 		
-		const now = new Date();
-		const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+		const timeString = time || new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 		
 		messageDiv.innerHTML = `
 			<div class="message-content">

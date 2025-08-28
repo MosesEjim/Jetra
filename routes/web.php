@@ -14,4 +14,5 @@ Route::prefix('telegram')->group(function () {
     Route::post('/send-message', [TelegramController::class, 'sendMessage']);
     Route::get('/set-webhook', [TelegramController::class, 'setWebhook']);
     Route::get('/remove-webhook', [TelegramController::class, 'removeWebhook']);
+    Route::get('/get-messages', [TelegramController::class, 'getMessages']);
 })->withoutMiddleware([VerifyCsrfToken::class]);
