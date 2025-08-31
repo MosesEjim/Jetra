@@ -10383,13 +10383,68 @@ textarea.form-control {
 /* Responsive Design */
 @media (max-width: 768px) {
 	.chat-window {
-		width: 90vw;
-		right: 5vw;
-		left: 5vw;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100vw;
+		height: 100vh;
+		border-radius: 0;
+		max-height: none;
+		z-index: 9999;
+	}
+	
+	.chat-header {
+		padding: 15px 20px;
+		padding-top: env(safe-area-inset-top, 15px);
+	}
+	
+	.chat-messages {
+		padding: 15px;
+		padding-bottom: env(safe-area-inset-bottom, 15px);
+	}
+	
+	.chat-input {
+		padding: 15px;
+		padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+		border-top: 1px solid #e9ecef;
+	}
+	
+	.chat-input input {
+		font-size: 16px; /* Prevents zoom on iOS */
 	}
 	
 	.chat-label {
 		display: inline;
+	}
+	
+	.chat-button {
+		bottom: 20px;
+		right: 20px;
+		z-index: 10000;
+	}
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+	.chat-header {
+		padding: 12px 15px;
+		padding-top: env(safe-area-inset-top, 12px);
+	}
+	
+	.chat-messages {
+		padding: 10px;
+	}
+	
+	.chat-input {
+		padding: 10px;
+		padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+	}
+	
+	.message-content {
+		font-size: 14px;
+		padding: 10px 12px;
 	}
 }
 
