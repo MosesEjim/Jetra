@@ -3,7 +3,9 @@
 @section('content')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">je<span>t</span>ra</a>
+        <a class="navbar-brand" href="index.html">
+            <img src="{{ asset('images/logo.png') }}" alt="Jetra Logo" class="logo-img">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -84,15 +86,15 @@
                     </div>
                     <div class="col-md-6 ftco-animate">
                         <div class="text text-md-right">
-                            <h3>Welcome to JETRA A NETWORKING SOLUTIONS Agency</h3>
-                            <p>At JETRA, we turn challenges into solutions. For over 25 years, our certified engineers and project managers have delivered world-class integrated systems and I.T. services to Governments, Educational Institutions, Military, Hotels, and Private Companies.</p>
+                            <h3 style="color:rgb(160, 160, 180); font-family: 'Capsmall'">Welcome to JETRA A NETWORKING SOLUTIONS Agency</h3>
+                            <p style="font-family: 'Capsmall'; font-size: 18px">At JETRA, we turn challenges into solutions. For over 25 years, our certified engineers and project managers have delivered world-class integrated systems and I.T. services to Governments, Educational Institutions, Military, Hotels, and Private Companies.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 ftco-animate">
                 <div class="text">
-                    <p>From cyber security, data centers, and call center solutions to network infrastructure, VoIP, enterprise surveillance, and smart city innovations—we design, deploy, and support technology that drives performance, security, and growth. At JETRA, we go beyond technology deployment—we partner with clients to build resilient, secure, and future-ready infrastructure.</p>
+                    <p style="font-family: 'Capsmall'; font-size: 18px">From cyber security, data centers, and call center solutions to network infrastructure, VoIP, enterprise surveillance, and smart city innovations—we design, deploy, and support technology that drives performance, security, and growth. At JETRA, we go beyond technology deployment—we partner with clients to build resilient, secure, and future-ready infrastructure.</p>
                     <p><a href="#" class="btn btn-primary">View all projects</a></p>
                 </div>
             </div>
@@ -111,7 +113,7 @@
         <div class="row no-gutters">
             <div class="col-md-12 portfolio-wrap mt-0">
                 <div class="row no-gutters align-items-center">
-                    <div class="col-md-5 img" style="background-image: url(images/work_1.jpg);">
+                    <div class="col-md-5 img" style="background-image: url(images/work_1.png);">
                         
                     </div>
                     <div class="col-md-7">
@@ -120,10 +122,10 @@
                                 <div class="desc">
                                     <div class="top">
                                         <span class="subheading">Fusion Center Deployment</span>
-                                        <h2 class="mb-2"><a href="work.html">Fusion Center</a></h2>
+                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="work.html">Fusion Center</a></h2>
                                     </div>
                                     <div class="absolute">
-                                        <p>design and implementation of mission-critical command and control centers</p>
+                                        <p style="font-family: 'Capsmall'; font-size: 18px">design and implementation of mission-critical command and control centers</p>
                                         {{-- <div class="icon d-flex align-items-center mb-4">
                                             <div class="img" style="background-image: url(images/person_1.jpg);"></div>
                                             <div class="position pl-3">
@@ -151,10 +153,10 @@
                                 <div class="desc text-md-right">
                                     <div class="top">
                                         <span class="subheading">Call Center Solutions</span>
-                                        <h2 class="mb-2"><a href="work.html">Call Center</a></h2>
+                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="work.html">Call Center</a></h2>
                                     </div>
                                     <div class="absolute">
-                                        <p>enterprise-grade customer engagement and support platforms.</p>
+                                        <p style="font-family: 'Capsmall'; font-size: 18px">enterprise-grade customer engagement and support platforms.</p>
                                         {{-- <div class="d-flex w-100">
                                             <div class="icon d-flex align-items-center ml-md-auto mb-4">
                                                 <div class="img" style="background-image: url(images/person_2.jpg);"></div>
@@ -184,10 +186,10 @@
                                 <div class="desc">
                                     <div class="top">
                                         <span class="subheading">Cybersecurity Solutions </span>
-                                        <h2 class="mb-2"><a href="work.html">Cybersecurity</a></h2>
+                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="work.html">Cybersecurity</a></h2>
                                     </div>
                                     <div class="absolute">
-                                        <p>comprehensive defense against digital threats with proactive monitoring and risk management</p>
+                                        <p style="font-family: 'Capsmall'; font-size: 18px">comprehensive defense against digital threats with proactive monitoring and risk management</p>
                                         {{-- <div class="icon d-flex align-items-center mb-4">
                                             <div class="img" style="background-image: url(images/person_3.jpg);"></div>
                                             <div class="position pl-3">
@@ -215,10 +217,10 @@
                                 <div class="desc text-md-right">
                                     <div class="top">
                                         <span class="subheading">Data Centers</span>
-                                        <h2 class="mb-2"><a href="work.html">Data Centers</a></h2>
+                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="work.html">Data Centers</a></h2>
                                     </div>
                                     <div class="absolute">
-                                        <p>design, deployment, and management of scalable and secure data center infrastructures.</p>
+                                        <p style="font-family: 'Capsmall'; font-size: 18px">design, deployment, and management of scalable and secure data center infrastructures.</p>
                                         {{-- <div class="d-flex w-100">
                                             <div class="icon d-flex align-items-center ml-md-auto mb-4">
                                                 <div class="img" style="background-image: url(images/person_2.jpg);"></div>
@@ -248,10 +250,10 @@
                                 <div class="desc">
                                     <div class="top">
                                         <span class="subheading">Wired & Wireless Network Infrastructure</span>
-                                        <h2 class="mb-2"><a href="work.html">Network Infrastructure</a></h2>
+                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="work.html">Network Infrastructure</a></h2>
                                     </div>
                                     <div class="absolute">
-                                        <p>robust connectivity solutions for organizations of all sizes.</p>
+                                        <p style="font-family: 'Capsmall'; font-size: 18px">robust connectivity solutions for organizations of all sizes.</p>
                                         {{-- <div class="icon d-flex align-items-center mb-4">
                                             <div class="img" style="background-image: url(images/person_2.jpg);"></div>
                                             <div class="position pl-3">
@@ -279,10 +281,10 @@
                                 <div class="desc text-md-right">
                                     <div class="top">
                                         <span class="subheading">VoIP Networks</span>
-                                        <h2 class="mb-2"><a href="work.html">VoIP Networks</a></h2>
+                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="work.html">VoIP Networks</a></h2>
                                     </div>
                                     <div class="absolute">
-                                        <p>enterprise voice communication systems for cost efficiency and reliability.</p>
+                                        <p style="font-family: 'Capsmall'; font-size: 18px">enterprise voice communication systems for cost efficiency and reliability.</p>
                                         {{-- <div class="d-flex w-100">
                                             <div class="icon d-flex align-items-center ml-md-auto mb-4">
                                                 <div class="img" style="background-image: url(images/person_2.jpg);"></div>

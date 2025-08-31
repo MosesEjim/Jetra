@@ -210,7 +210,7 @@ class TelegramController extends Controller
     public function sendMessage(Request $request){
         try {
             $message = $request->input('message');
-            
+            $guest_name = $request->input('guest');
             if (!$message) {
                 return response()->json(['status' => 'error', 'message' => 'Message is required'], 400);
             }
@@ -221,6 +221,15 @@ class TelegramController extends Controller
                 'text' => $message
             ]);
             
+            Message::create([
+                'type' => 1, // text message
+                'sender' => 'Unknown',
+                'message' => $message,
+                'chat_id' => $guest_name,
+                'telegram_message_id' => $chatId,
+                'is_from_telegram' => false
+            ]);
+
             if ($result) {
                 return response()->json(['status' => 'success', 'message' => 'Message sent successfully']);
             } else {

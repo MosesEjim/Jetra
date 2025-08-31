@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					'Content-Type': 'application/json',
 					'X-Requested-With': 'XMLHttpRequest'
 				},
-				body: JSON.stringify({ message: formattedMessage })
+				body: JSON.stringify({ message: formattedMessage, guest: guestName })
 			})
 			.then(response => {
 				if (!response.ok) {
