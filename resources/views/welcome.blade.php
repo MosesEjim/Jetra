@@ -37,7 +37,7 @@
                         <div class="text">
                             <h1 class="mb-4">You set the challenge &amp; we provide the solutions</h1>
                             {{-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> --}}
-                            <p class="mb-0"><a href="#" class="btn btn-primary py-md-3 py-2 px-2 px-md-4">Start Project</a></p>
+                            <p class="mb-0"><a href="#contact-section" class="btn btn-primary py-md-3 py-2 px-2 px-md-4">Start Project</a></p>
                         </div>
                     </div>
                     {{-- <a href="https://vimeo.com/45830194" class="img-video popup-vimeo d-flex align-items-center justify-content-center">
@@ -59,7 +59,7 @@
                         <div class="text">
                             <h1 class="mb-4">You set the challenge &amp; we provide the solutions</h1>
                             {{-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> --}}
-                            <p class="mb-0"><a href="#" class="btn btn-primary py-md-3 py-2 px-2 px-md-4">Explore Projects</a></p>
+                            <p class="mb-0"><a href="#work" class="btn btn-primary py-md-3 py-2 px-2 px-md-4">Explore Projects</a></p>
                         </div>
                     </div>
                     {{-- <a href="https://vimeo.com/45830194" class="img-video popup-vimeo d-flex align-items-center justify-content-center">
@@ -217,7 +217,7 @@
                                 <div class="desc text-md-right">
                                     <div class="top">
                                         <span class="subheading">Data Centers</span>
-                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="work.html">Data Centers</a></h2>
+                                        <h2 class="mb-2" style="font-family: 'Capsmall';"><a href="#">Data Centers</a></h2>
                                     </div>
                                     <div class="absolute">
                                         <p style="font-family: 'Capsmall'; font-size: 18px">design, deployment, and management of scalable and secure data center infrastructures.</p>
@@ -448,26 +448,52 @@
   
     <div class="row block-9">
       <div class="col-md-8">
-        <form action="#" class="p-4 p-md-5 contact-form">
+        <form action="{{ route('contact.submit') }}" method="POST" class="p-4 p-md-5 contact-form">
+          @csrf
+          
+          @if(session('success'))
+            <div class="alert alert-success mb-3">
+              {{ session('success') }}
+            </div>
+          @endif
+          
+          @if(session('error'))
+            <div class="alert alert-danger mb-3">
+              {{ session('error') }}
+            </div>
+          @endif
+          
          <div class="row">
           <div class="col-md-6">
            <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Name">
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Your Name" value="{{ old('name') }}" required>
+            @error('name')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Email">
+            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Your Email" value="{{ old('email') }}" required>
+            @error('email')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Subject">
+            <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" placeholder="Subject" value="{{ old('subject') }}" required>
+            @error('subject')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
-            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+            <textarea name="message" cols="30" rows="7" class="form-control @error('message') is-invalid @enderror" placeholder="Message" required>{{ old('message') }}</textarea>
+            @error('message')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="col-md-12">
