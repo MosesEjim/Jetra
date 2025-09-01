@@ -224,7 +224,7 @@ class TelegramController extends Controller
             Message::create([
                 'type' => 1, // text message
                 'sender' => 'Unknown',
-                'message' => $message,
+                'message' => explode(':', $message)[1] ?? $message,
                 'chat_id' => $guest_name,
                 'telegram_message_id' => $chatId,
                 'is_from_telegram' => false

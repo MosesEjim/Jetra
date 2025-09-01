@@ -311,7 +311,7 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-8 text-center heading-section ftco-animate">
-                <h2 class="mb-3">Meet Our Partners</h2>
+                {{-- <h2 class="mb-3">Meet Our Partners</h2> --}}
             </div>
         </div>
         <div class="row ftco-animate mb-4">
@@ -395,7 +395,7 @@
                         <div class="testimony-wrap py-4">
                             <div class="text">
                                 <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(images/partner_7.png)"></div>
+                                    <div class="user-img" style="background-image: url(images/partner_7.png); background-size: contain;"></div>
                                     <div class="pl-3">
                                         <p class="name">YEASTAR</p>
                                     </div>
@@ -408,7 +408,7 @@
                         <div class="testimony-wrap py-4">
                             <div class="text">
                                 <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(images/partner_8.png)"></div>
+                                    <div class="user-img" style="background-image: url(images/partner_8.png); background-size: contain;"></div>
                                     <div class="pl-3">
                                         <p class="name">YEALINK</p>
                                     </div>
@@ -421,7 +421,7 @@
                         <div class="testimony-wrap py-4">
                             <div class="text">
                                 <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(images/partner_9.png)"></div>
+                                    <div class="user-img" style="background-image: url(images/partner_9.png); background-size: contain;"></div>
                                     <div class="pl-3">
                                         <p class="name">HODUSOFT</p>
                                     </div>
@@ -442,7 +442,7 @@
      <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 heading-section text-center ftco-animate">
         <span class="subheading">Contact us</span>
-        <h2 class="mb-4">Have a Project?</h2>
+        <h2 class="mb-4">Do you have a Project?</h2>
       </div>
     </div>
   

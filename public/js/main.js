@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Close chat when clicking outside
 	document.addEventListener('click', function(e) {
 		if (!chatWindow.contains(e.target) && !chatButton.contains(e.target)) {
-			chatWindow.style.display = 'none';
+			//chatWindow.style.display = 'none';
 			stopMessagePolling();
 		}
 	});
@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				
 				// Add bot response
 				if (data.status === 'success') {
-					addMessage("✅ Message sent successfully! Our team will get back to you soon.", 'bot');
+					//addMessage("✅ Message sent successfully! Our team will get back to you soon.", 'bot');
 				} else {
 					addMessage("❌ Sorry, there was an error sending your message. Please try again.", 'bot');
 				}
