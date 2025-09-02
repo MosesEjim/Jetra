@@ -94,7 +94,7 @@
             <div class="col-md-4 ftco-animate">
                 <div class="text">
                     <p style="font-size: 20px">From cyber security, data centers, and call center solutions to network infrastructure, VoIP, enterprise surveillance, and smart city innovations—we design, deploy, and support technology that drives performance, security, and growth. At JETRA, we go beyond technology deployment—we partner with clients to build resilient, secure, and future-ready infrastructure.</p>
-                    <p><a href="#" class="btn btn-primary">View all projects</a></p>
+                    <p><a href="#work" class="btn btn-primary">View all projects</a></p>
                 </div>
             </div>
         </div>
