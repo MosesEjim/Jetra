@@ -8409,13 +8409,13 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    font-size: 13px;
+    font-size: 14px;
     padding-top: .9rem;
     padding-bottom: .9rem;
     padding-left: 20px;
     padding-right: 20px;
     color: rgba(255, 255, 255, 0.6);
-    font-weight: 600;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 1 !important; }
@@ -9435,10 +9435,10 @@ textarea.form-control {
     position: relative; }
     .portfolio-wrap .text .subheading {
       display: block;
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: 3px;
       color: #d1002c;
-      font-weight: 600; }
+      font-weight: 800; }
     .portfolio-wrap .text h2 {
       font-size: 40px;
       display: inline-block;
@@ -9934,7 +9934,9 @@ textarea.form-control {
       font-weight: 500;
       color: rgb(160, 160, 180); }
     .dbox p a {
-      color: #d1002c; }
+      color: #fff;
+    font-size: 20px;
+  font-weight: 600; }
   .dbox .icon {
     width: 50px;
     height: 50px;
@@ -9951,6 +9953,11 @@ textarea.form-control {
     .dbox .text span {
       display: block;
       line-height: 1.2; }
+      .dbox .text p {
+       color: #fff;
+       font-size: 20px;
+       font-weight: 600; 
+      }
 
 #map {
   width: 100%; }

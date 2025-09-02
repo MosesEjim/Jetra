@@ -3,7 +3,7 @@
 @section('content')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="#">
             <img src="{{ asset('images/logo.png') }}" alt="Jetra Logo" class="logo-img">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +31,8 @@
                 <div class="row no-gutters slider-text js-fullheight align-items-center">
                     <div class="col-md-12 ftco-animate">
                         <div class="absolute">
-                            <h4 class="number" data-number="400">0</h4>
-                            <p>More than a hundred successful projects</p>
+                            <h4 class="number" data-number="100">0</h4>
+                            <p style="font-size:20px; font-weight:800">More than a hundred successful projects</p>
                         </div>
                         <div class="text">
                             <h1 class="mb-4">You set the challenge &amp; we provide the solutions</h1>
@@ -54,7 +54,7 @@
                     <div class="col-md-12 ftco-animate">
                         <div class="absolute">
                             <h4 class="number" data-number="25">0</h4>
-                            <p>Years of Experience</p>
+                            <p style="font-size:20px; font-weight:800;">Years of Experience</p>
                         </div>
                         <div class="text">
                             <h1 class="mb-4">You set the challenge &amp; we provide the solutions</h1>
@@ -75,7 +75,7 @@
     <div class="container">
         <div class="row justify-content-center no-gutters">
             <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-                <h2 class="mb-2">About us</h2>
+                <h2 class="mb-2" style="font-family: 'Capsmall'">About us</h2>
             </div>
         </div>
         <div class="row wrap-about my-5">
@@ -86,15 +86,14 @@
                     </div>
                     <div class="col-md-6 ftco-animate">
                         <div class="text text-md-right">
-                            <h3 style="color:rgb(160, 160, 180); font-family: 'Capsmall'">Welcome to JETRA A NETWORKING SOLUTIONS Agency</h3>
-                            <p style="font-family: 'Capsmall'; font-size: 18px">At JETRA, we turn challenges into solutions. For over 25 years, our certified engineers and project managers have delivered world-class integrated systems and I.T. services to Governments, Educational Institutions, Military, Hotels, and Private Companies.</p>
+                            <p style="font-size: 20px">At JETRA, we turn challenges into solutions. For over 25 years, our certified engineers and project managers have delivered world-class integrated systems and I.T. services to Governments, Educational Institutions, Military, Hotels, and Private Companies.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 ftco-animate">
                 <div class="text">
-                    <p style="font-family: 'Capsmall'; font-size: 18px">From cyber security, data centers, and call center solutions to network infrastructure, VoIP, enterprise surveillance, and smart city innovations—we design, deploy, and support technology that drives performance, security, and growth. At JETRA, we go beyond technology deployment—we partner with clients to build resilient, secure, and future-ready infrastructure.</p>
+                    <p style="font-size: 20px">From cyber security, data centers, and call center solutions to network infrastructure, VoIP, enterprise surveillance, and smart city innovations—we design, deploy, and support technology that drives performance, security, and growth. At JETRA, we go beyond technology deployment—we partner with clients to build resilient, secure, and future-ready infrastructure.</p>
                     <p><a href="#" class="btn btn-primary">View all projects</a></p>
                 </div>
             </div>
@@ -521,7 +520,7 @@
      <span class="fa fa-phone"></span>
    </div>
    <div class="text">
-     <p><span>Phone:</span> <a href="tel://08036125887">08036125887</a></p>
+     <p><span>Phone:</span> <a href="tel://08036125887">+2348036125887</a></p>
    </div>
   </div>
   <div class="dbox w-100 d-flex ftco-animate">
@@ -544,7 +543,7 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">jetra</h2>
+                    <h2 class="ftco-heading-2">Social Links</h2>
                     <ul class="ftco-footer-social list-unstyled mt-5">
                         <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -558,9 +557,9 @@
                     <h2 class="ftco-heading-2">Have a Questions?</h2>
                     <div class="block-23 mb-3">
                         <ul>
-                            <li><span class="icon fa fa-map"></span><span class="text">5 King Solomon’s Layout Road, Waduruk, JOS PLATEAU STATE, NIGERIA</span></li>
-                            <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">08036125887</span></a></li>
-                            <li><a href="#"><span class="icon fa fa-envelope pr-4"></span><span class="text">jetrainfo@gmail.com</span></a></li>
+                            <li><span class="icon fa fa-map"></span><span class="text" style="font-size: 20px; font-weight:600">5 King Solomon’s Layout Road, Waduruk, JOS PLATEAU STATE, NIGERIA</span></li>
+                            <li><a href="#"><span class="icon fa fa-phone"></span><span class="text" style="font-size: 20px; font-weight:600">+2348036125887</span></a></li>
+                            <li><a href="#"><span class="icon fa fa-envelope pr-4"></span><span class="text" style="font-size: 20px; font-weight:600">jetrainfo@gmail.com</span></a></li>
                         </ul>
                     </div>
                 </div>
